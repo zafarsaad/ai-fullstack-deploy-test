@@ -33,6 +33,7 @@ model JournalEntry {
 
   analysis Analysis?
   // @@index([userId]) // not needed in PostgreSQL
+  @@unique([userId, id]) // issue, not sure if needed for Neon
 }
 
 model Analysis {
