@@ -18,7 +18,7 @@ export const PATCH = async (request: Request, { params }) => {
     const analysis = await analyze(updatedEntry.content)
 
     // we initially used update, but to account for those that are missing...using upsert
-    await prisma.analysis.upsert({
+    const updated = await prisma.analysis.upsert({
         where: {
             entryId: updatedEntry.id,
         },
@@ -33,5 +33,7 @@ export const PATCH = async (request: Request, { params }) => {
         return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
     }
 
-    return NextResponse.json({ data: updatedEntry })
+    // pay attention to how we are returning data in out app
+    // we are making a whole new obj analysis as our app is expecting that
+    return NextResponse.json({ data: { ...updatedEntry, analysis: updated } })
 }
