@@ -16,10 +16,6 @@ const getEntries = async () => {
     },
   })
 
-  await analyze(
-    'on a bus trip and wanting eat healthy what snacks can I get at usual bus stops?'
-  )
-
   return entries
 }
 
