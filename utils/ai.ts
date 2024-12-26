@@ -13,7 +13,8 @@ const parser = StructuredOutputParser.fromZodSchema(
         summary: z.string().describe('a short summary of the entire entry.'),
         subject: z.string().describe('the subject of the journal entry.'),
         color: z.string().describe('a hexadecimal color code representing the mood of the entry. Example #008000 for a really happy entry and #800000 for a really negative entry'),
-        negative: z.boolean().describe('is the the journal entry contain negative emotion?')
+        negative: z.boolean().describe('is the the journal entry contain negative emotion?'),
+        sentimentScore: z.number().describe('sentiment of the text and rated on a scale from -10 to 10, where -10 is extremely negative, 0 is neutral, and 10 is extremely positive.'),
     })
 )
 
